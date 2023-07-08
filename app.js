@@ -1,16 +1,28 @@
-const colors = ["green", "red", "rgba(133,122,200)", "#f15025"];
-const btn = document.getElementById("btn");
-const color = document.querySelector(".color");
+let count = 0;
 
-btn.addEventListener("click", function(){
+const value = document.querySelector('#value');
+const btns = document.querySelectorAll(".btn");
+btns.forEach(function(btn){
 
-    const randomNumber = getRandomNumber();
-    console.log(randomNumber);
-    document.body.style.backgroundColor = colors[randomNumber];
-    color.textContent =  colors[randomNumber];
-})
-function getRandomNumber(){
+btn.addEventListener("click",function(e){
 
-    return Math.floor(Math.random()*colors.length);
-    // return Math.floor(1.6);
-}
+    const styles = e.currentTarget.classList;
+    if(styles.contains("decrease")){
+
+        count--;
+    }
+    else if(styles.contains("increase")){
+
+        count++;
+    }
+    else{
+
+        count = 0;
+    }
+
+    value.textContent = count;
+});
+
+
+
+});
